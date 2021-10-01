@@ -36,7 +36,6 @@ pipeline {
                     sh "./gradlew build --stacktrace"
                     //sh "gradle wrapper --stacktrace"
                     //sh "gradle bootJar"
-
                     sh "docker build -t demo ."
                 //}
             }
@@ -44,10 +43,12 @@ pipeline {
         stage('deploy') {
             steps {
                 sh '''
-                
-                  docker run -d -p 8080:8080 --name demo demo
+
+                  docker run -d -p 7010:8080 --name demo demo
+
                 '''
             }
         }
     }
 }
+
