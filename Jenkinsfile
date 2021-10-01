@@ -4,7 +4,7 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
     }
     environment {
-        SOURCECODE_JENKINS_CREDENTIAL_ID = 'jenkins-github-wh'
+        SOURCECODE_JENKINS_CREDENTIAL_ID = 'jenkins-github-board-dev'
         SOURCE_CODE_URL = 'https://github.com/MinjiY/Springboot-jenkins.git'
         RELEASE_BRANCH = 'master'
     }
@@ -37,7 +37,7 @@ pipeline {
                     //sh "gradle wrapper --stacktrace"
                     //sh "gradle bootJar"
 
-                    sh "docker build -t upi907/demodeploy ."
+                    sh "docker build -t buildup ."
                 //}
             }
         }
@@ -45,7 +45,7 @@ pipeline {
             steps {
                 sh '''
                 
-                  docker run -d -p 8080:8080 --name demo upi907/demodeploy
+                  docker run -d -p 7010:8080 --name demo buildup
                 '''
             }
         }
